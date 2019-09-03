@@ -41,3 +41,43 @@ EOF
 ```
 dee
 ```
+
+Replace all lowercase letters of English alphabet with the corresponding uppercase letters:
+```sh
+tr a-z A-Z <<EOF
+abmnyz
+EOF
+```
+```
+ABMNYZ
+```
+
+Replace all uppercase letters of English alphabet with the corresponding lowercase letters:
+```sh
+tr A-Z a-z <<EOF
+ABMNYZ
+EOF
+```
+```
+abmnyz
+```
+
+Replace lowercase letters from `a` to `m` with the corresponding uppercase letters and lowercase letters from `n` to `z` with `M`:
+```sh
+tr a-z A-M <<EOF
+abcdfghjklmnpqrstvwxyz
+EOF
+```
+```
+ABCDFGHJKLMMMMMMMMMMMM
+```
+
+Replace all lowercase letters with the corresponding uppercase letters:
+```sh
+tr [:lower:] [:upper:] <<EOF
+аяaz
+EOF
+```
+```
+АЯAZ
+```
