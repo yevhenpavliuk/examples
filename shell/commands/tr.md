@@ -1,25 +1,57 @@
 # tr
 
-Replace (translate) characters.
+Replace or delete characters.
 
-Replace `a` with `b`:
+Replace all the occurrences of `a` with `b`:
 ```sh
 tr a b <<EOF
-a
+aa
+EOF
+```
+```
+bb
+```
+
+Delete `a`:
+```sh
+tr -d a <<EOF
+aab
 EOF
 ```
 ```
 b
 ```
 
+Replace everything except `a` with `b`:
+```sh
+tr -C a b <<EOF
+abc
+EOF
+```
+The third `b` is for the line feed. There's no line feed is in the output:
+```
+abbb
+```
+
+Delete everything except `a` and `b`:
+```sh
+tr -dC ab <<EOF
+abcba
+EOF
+```
+The line feed at the end is deleted, too:
+```
+abba
+```
+
 Replace `a` with `c` and `b` with `d`:
 ```sh
 tr ab cd <<EOF
-ab
+abba
 EOF
 ```
 ```
-cd
+cddc
 ```
 
 Replace `a` and `b` with `c`:
